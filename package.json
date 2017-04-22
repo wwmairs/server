@@ -1,6 +1,11 @@
 {
   "name" : "staticserver",
   "version" : "0.0.1",
+  "description" : "A simple express serving for static content",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/wwmairs/server"
+  },
   "dependencies" : {
     "express" : "latest",
     "body-parser" : "latest"
