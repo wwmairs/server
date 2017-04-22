@@ -1,0 +1,108 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  background: linear-gradient(to bottom, #006699 0%, #ffffcc 100%);
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  height: 2000px;
+}
+
+div {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  outline: 1px solid #ffffcc;
+}
+
+h1 {
+  text-align: center;
+  font-style: italic;
+  font-size: 80px;
+  font-weight: 100;
+  letter-spacing: 18px;
+  word-spacing: 35px;
+  color: #ffffcc;
+}
+
+h2 {
+  text-align: center;
+  font-style: italic;
+  font-weight: 100;
+  letter-spacing: 10px;
+  color: #ffffcc;
+}
+
+h3 {
+  text-align: center;
+  font-weight: 100;
+  color: #ffffcc;
+
+}
+
+p {
+  text-align: center;
+  margin: auto;
+  width: 200px;
+  border-left: 1px solid #ffffcc;
+  line-height: 27px;
+  color: #ffffcc;
+}
+
+/* formatting of navigation bar */
+ul.navbar {
+  list-style-type: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #80B2B2;
+}
+
+ul.navbar li {
+  float: left;
+}
+
+ul.navbar li a {
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 30px;
+  font-weight: 100;
+  display: inline;
+  text-decoration: none;
+
+}
+
+ul.navbar li.home {
+  float: right;
+}
+
+
+ul.navbar li a:link {
+  background-color: #80B2B2;
+  color: black;
+}
+
+ul.navbar li a:visited {
+  background-color: #80B2B2;
+  color: black;
+}
+
+ul.navbar li a:hover {
+  background-color: #ffffcc;
+  color: black;
+  cursor: default;
+}
+
+
+ul.navbar li a:active {
+  background-color: #ffb366;
+  color: black;
+}
+
+ul.navbar li a.curr {
+  background-color: #ffffcc;
+}
