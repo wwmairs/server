@@ -1,68 +1,70 @@
-body {
-  font-family: 'Roboto', sans-serif;
+/* resume.css
+ * stylesheet for resume.html
+ */
+
+body{
+  font-family: Roboto;
+  margin:0;
   font-size: 18px;
   letter-spacing: 2px;
-  background: linear-gradient(to bottom, #006699 0%, #ffffcc 100%);
-  background-attachment: scroll;
-  background-repeat: no-repeat;
-  height: 2000px;
 }
 
-div {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  outline: 1px solid #ffffcc;
+div{
+  overflow:hidden;
 }
 
-h1 {
+.panel{
+  position: relative;
+  color: white;
+}
+
+h1{
   text-align: center;
   font-style: italic;
-  font-size: 80px;
-  font-weight: 100;
-  letter-spacing: 18px;
-  word-spacing: 35px;
-  color: #ffffcc;
-}
-
-h2 {
-  text-align: center;
-  font-style: italic;
-  font-weight: 100;
+  color: black;
   letter-spacing: 10px;
-  color: #ffffcc;
-}
+  font-size: 25px;
 
-h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+h2{
   text-align: center;
-  font-weight: 100;
-  color: #ffffcc;
-
+  font-style: italic;
+}
+#education{
+  background: rgba(255, 0, 0, 0.7);
 }
 
-p {
-  text-align: center;
-  margin: auto;
-  width: 200px;
-  border-left: 1px solid #ffffcc;
-  line-height: 27px;
-  color: #ffffcc;
+#languages{
+  background: rgba(0, 0, 255, 0.7);
 }
 
+#experience{
+  background: rgba(255, 255, 0, 0.7);
+  color: black;
+}
 /* formatting of navigation bar */
 ul.navbar {
+  /* starts hidden */
+  display: none;
   list-style-type: none;
   position: fixed;
   bottom: 0;
+  /*top: 0;*/
   left: 0;
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #80B2B2;
+  /*background-color: rgba(255, 0, 0, 0.7);*/
 }
 
 ul.navbar li {
   float: left;
+  /*margin: auto;*/
+  /*width: 50%;*/
 }
 
 ul.navbar li a {
@@ -71,38 +73,35 @@ ul.navbar li a {
   padding-left: 10px;
   font-size: 30px;
   font-weight: 100;
-  display: inline;
+  /*display: inline;*/
   text-decoration: none;
-
+  color: white;
 }
 
 ul.navbar li.home {
-  float: right;
+  /*float: right;*/
 }
 
 
 ul.navbar li a:link {
-  background-color: #80B2B2;
-  color: black;
+  background-color: rgba(255, 0, 0, 0.7);
 }
 
 ul.navbar li a:visited {
-  background-color: #80B2B2;
-  color: black;
+  background-color: rgba(255, 0, 0, 0.7);
 }
 
 ul.navbar li a:hover {
-  background-color: #ffffcc;
-  color: black;
+  background-color: rgba(0, 0, 255, 0.7);
   cursor: default;
 }
 
 
 ul.navbar li a:active {
-  background-color: #ffb366;
+  background-color: rgba(255, 255, 0, 0.7);
   color: black;
 }
 
-ul.navbar li a.curr {
-  background-color: #ffffcc;
-}
+/*ul.navbar li a.curr {
+  background-color: rgba(0, 0, 255, 0.7);
+}*/

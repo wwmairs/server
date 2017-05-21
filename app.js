@@ -12,3 +12,6 @@ app.use(express.static('public'));
 
 http.createServer(app).listen(80);
 // https.createServer(options, app).listen(443);
+
+
+// public IP of the pine is 24.61.43.116
