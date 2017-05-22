@@ -9,6 +9,6 @@
   "dependencies" : {
     "express" : "latest",
     "body-parser" : "latest",
-    "dark-sky" : "latest"
+    "forecastio" : "latest"
   } 
 }
