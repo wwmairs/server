@@ -10,12 +10,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
 
 
-app.get('/bio.html', function(request, response) {
+app.get('/weather.json', function(request, response) {
         var forecastIo = new ForecastIo('b98bd842e0894e2f05cb3bc94579718c');
         forecastIo.forecast('42.402', '-71.126').then(function(data) {
-                console.log(JSON.stringify(data, null, 2));
+                response.send(JSON.stringify(data, null, 2));
         });
-        response.sendFile(path.join(__dirname+'/public/bio.html'));
 });
 
 // from https://expressjs.com/en/starter/static-files.html
