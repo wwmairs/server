@@ -1,0 +1,3 @@
+#!/bin/bash
+# a script to start up the server
+sudo node app.js
