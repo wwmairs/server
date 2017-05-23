@@ -9,7 +9,6 @@
   "dependencies" : {
     "express" : "latest",
     "body-parser" : "latest",
-    "forecastio" : "latest",
-    "greenlock-express" : "latest"
+    "forecastio" : "latest"
   } 
 }
