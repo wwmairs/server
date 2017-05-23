@@ -18,6 +18,10 @@ app.get('/weather.json', function(request, response) {
         });
 });
 
+app.get('/sweetboy', function(request, response) {
+        response.send('<html><body><img src="https://dl.dropboxusercontent.com/s/r1y7nzwwc1rr5vt/sweet.jpg?dl=0" alt="SweetBoy"></body></html>');
+});
+
 // from https://expressjs.com/en/starter/static-files.html
 app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
 
