@@ -26,7 +26,7 @@ app.get('/sweetboy', function(request, response) {
 // from https://expressjs.com/en/starter/static-files.html
 app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
 
-http.createServer().listen(80);
+http.createServer(app).listen(80);
 
 
 // public IP of the pine is 24.61.43.116

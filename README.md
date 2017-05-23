@@ -7,4 +7,5 @@ It's mostly just a little playground to work out APIs, like the super cool [Dark
 - [x] figure out how to use darksky api (thanks to a neat [wrapper](https://github.com/soplakanets/node-forecastio))
 - [x] implement client-side use of weather.json route
 - [ ] more interactive design using the Dark Sky data
+- [ ] maybe one day figure out HTTPS
 - [ ] more things!
