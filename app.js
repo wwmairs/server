@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended : true}));
 
 // from https://git.daplie.com/Daplie/greenlock-express
 var lex = require('greenlock-express').create({
-    server: 'staging'
+    server: 'https://acme-v01.api.letsencrypt.org/directory'
 
 ,   challenges: {'http-01': require('le-challenge-fs').create({ webrootpath: '/tmp/acme-challenges' }) }
 ,   store: require('le-store-certbot').create({ webrootPath: '/tmp/acme-challenges' })
