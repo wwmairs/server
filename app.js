@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended : true}));
 
 
 app.get('/weather.json', function(request, response) {
-    if (req.query.pass == weather_pass) {
+    if (request.query.pass == weather_pass) {
     var forecastIo = new ForecastIo('b98bd842e0894e2f05cb3bc94579718c');
     forecastIo.forecast('42.402', '-71.126').then(function(data) {
         response.setHeader('Access-Control-Allow-Origin', '*');
