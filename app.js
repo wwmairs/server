@@ -37,11 +37,10 @@ app.get('/sunset.json', function(request, response) {
     email: 'wwmairs@gmail.com',
     passowrd: 'Sweetboy1'
     });
-    sunsetwx.quality({
+    var data = sunsetwx.quality({
         coords: '-71.126,42.402',
-        type: 'sunset'}, function(data) {
-            response.send(data);
-        });
+        type: 'sunset'});
+    response.send(data);
 
     // var curr_time = (new Date).getTime();
     // if (!db.has('sunset_token') ) {
