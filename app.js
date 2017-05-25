@@ -7,10 +7,14 @@ var path = require('path');
 var ForecastIo = require('forecastio');
 var http = require('http');
 var url = require('url');
+var request = require('request');
+var flatfile = require('flat-file-db');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
+
+var db = flatfile.sync('/tmp/wwmairs.db');
 
 
 app.get('/weather.json', function(request, response) {
@@ -26,6 +30,19 @@ app.get('/weather.json', function(request, response) {
     }
 });
 
+app.get('/sunset.json', function(request, response) {
+    // curr_time = (new Date).getTime();
+    // if (!db.has('sunset_token') ) {
+    //     get_token();
+    // }
+    // token = JSON.parse(db.get('sunset_token'));
+    // if (token.time_in + token.exp_sec >= curr_time) {
+    //     get_token();
+    // }
+    get_token();
+
+});
+
 app.get('/sweetboy', function(request, response) {
         response.send('<html><body><img src="https://dl.dropboxusercontent.com/s/r1y7nzwwc1rr5vt/sweet.jpg?dl=0" alt="SweetBoy" style="width: 80%; display: block; margin: auto;"></body></html>');
 });
@@ -35,5 +52,8 @@ app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
 
 http.createServer(app).listen(80);
 
+function get_token() {
+    token = request.post("https://sunburst.sunsetwx.com/v1/login").form({email:"wwmairs@gmail.com", password:"Sweetboy1"});
+    console.log(token);
 
-// public IP of the pine is 24.61.43.116
+}
