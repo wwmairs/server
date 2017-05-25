@@ -8,6 +8,7 @@ var ForecastIo = require('forecastio');
 var http = require('http');
 var url = require('url');
 var flatfile = require('flat-file-db');
+var SunsetWx = require('node-sunsetwx');
 
 
 
