@@ -11,6 +11,6 @@
     "body-parser" : "latest",
     "forecastio" : "latest",
     "flat-file-db" : "latest",
-    "request" : "latest"
+    "node-sunsetwx" : "latest"
   } 
 }

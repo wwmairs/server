@@ -7,14 +7,15 @@ var path = require('path');
 var ForecastIo = require('forecastio');
 var http = require('http');
 var url = require('url');
-var request = require('request');
 var flatfile = require('flat-file-db');
+
+
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
 
-var db = flatfile.sync('/tmp/wwmairs.db');
+// var db = flatfile.sync('/tmp/wwmairs.db');
 
 
 app.get('/weather.json', function(request, response) {
@@ -31,24 +32,34 @@ app.get('/weather.json', function(request, response) {
 });
 
 app.get('/sunset.json', function(request, response) {
-    var curr_time = (new Date).getTime();
-    if (!db.has('sunset_token') ) {
-        get_token();
-    }
-    var token = db.get('sunset_token');
-    if (token.time_in + token.exp_sec >= curr_time) {
-        get_token();
-    }
-    token = db.get('sunset_token');
-
-    console.log('about to send request');
-    request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126", 
-        {'Authorization' : 
-            {'Bearer' : token.token}}, 
-        function (err, httpResponse, body){
-            console.log('request came back');
-            response.send(body);
+    var sunsetxw = new SunsetWx({
+    email: 'wwmairs@gmail.com',
+    passowrd: 'Sweetboy1'
     });
+    sunsetwx.quality({
+        coords: '-71.126,42.402',
+        type: 'sunset'}, function(data) {
+            response.send(data);
+        });
+
+    // var curr_time = (new Date).getTime();
+    // if (!db.has('sunset_token') ) {
+    //     get_token();
+    // }
+    // var token = db.get('sunset_token');
+    // if (token.time_in + token.exp_sec >= curr_time) {
+    //     get_token();
+    // }
+    // token = db.get('sunset_token');
+
+    // console.log('about to send request');
+    // request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126", 
+    //     {'Authorization' : 
+    //         {'Bearer' : token.token}}, 
+    //     function (err, httpResponse, body){
+    //         console.log('request came back');
+    //         response.send(body);
+    // });
 });
 
 app.get('/sweetboy', function(request, response) {
