@@ -39,8 +39,12 @@ app.get('/sunset.json', function(request, response) {
     // if (token.time_in + token.exp_sec >= curr_time) {
     //     get_token();
     // }
-    get_token();
-    console.log(db.get('sunset_token'));
+
+    // get_token();
+    // console.log(db.get('sunset_token'));
+
+    db.put('hello', {world:1});
+    console.log(db.get('hello'));
 
 });
 
