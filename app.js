@@ -40,11 +40,11 @@ app.get('/sunset.json', function(request, response) {
     //     get_token();
     // }
 
-    // get_token();
+    get_token();
     // console.log(db.get('sunset_token'));
 
-    db.put('hello', {world:1});
-    console.log(db.get('hello'));
+    // db.put('hello', {world:1});
+    // console.log(db.get('hello'));
 
 });
 
@@ -62,6 +62,8 @@ function get_token() {
         var new_entry = { time_in: (new Date).getTime(), 
                           exp_sec: body.token_exp_sec,
                           token: body.token};
-        db.put('sunset_token', new_entry);
+        console.log(new_entry);
+
+        // db.put('sunset_token', new_entry);
     });
 }
