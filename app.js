@@ -53,7 +53,7 @@ app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
 http.createServer(app).listen(80);
 
 function get_token() {
-    var token = request.post("https://sunburst.sunsetwx.com/v1/login").form({email:"wwmairs@gmail.com", password:"Sweetboy1"});
-    console.log(token);
-
+    request.post("https://sunburst.sunsetwx.com/v1/login", {form:{email:"wwmairs@gmail.com", password:"Sweetboy1"}}, function (err, httpResponse, body){
+        console.log(body);
+    });
 }
