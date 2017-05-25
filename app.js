@@ -21,7 +21,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
 
-// var db = flatfile.sync('/tmp/wwmairs.db');
+var db = flatfile.sync('/tmp/wwmairs.db');
 
 
 app.get('/weather.json', function(request, response) {
@@ -37,33 +37,24 @@ app.get('/weather.json', function(request, response) {
     }
 });
 
-app.get('/sunset.json', function(request, response) {
-    sunsetwx.quality({
-        coords: '-71.126,42.402',
-        type: 'sunset',
-        radius: '5',
-        limit: '5'}, function (err, httpResponse, body) {
-            response.send(body);
-        });
+// db architecture
+// 'sun_info' = {
+//     'date' : <Date.getDate()>
+//     'sunrise' : <sunrise_info>
+//     'sunset' : <sunset_info>
+// }
 
-    // var curr_time = (new Date).getTime();
-    // if (!db.has('sunset_token') ) {
-    //     get_token();
-    // }
-    // var token = db.get('sunset_token');
-    // if (token.time_in + token.exp_sec >= curr_time) {
-    //     get_token();
-    // }
-    // token = db.get('sunset_token');
+=======
+app.get('/sun.json', function(request, response) {
+    var curr_date = (new Date).getDate();
+    if (!db.has('sun_info') or
+        (db.get('sun_info').date != curr_date)) {
+            response.send(updateSunInfo());
+    } else {
+        response.send(db.get('sun_info'));
+    }
 
-    // console.log('about to send request');
-    // request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126",
-    //     {'Authorization' :
-    //         {'Bearer' : token.token}},
-    //     function (err, httpResponse, body){
-    //         console.log('request came back');
-    //         response.send(body);
-    // });
+>>>>>>> b684e324575886678af5096903e0718bbc7ce099
 });
 
 app.get('/sweetboy', function(request, response) {
@@ -75,14 +66,31 @@ app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
 
 http.createServer(app).listen(80);
 
-function get_token() {
-    console.log('getting a new token ...');
-    request.post("https://sunburst.sunsetwx.com/v1/login", {form:{email:"wwmairs@gmail.com", password:"Sweetboy1"}}, function (err, httpResponse, body){
-        var data = JSON.parse(body);
-        var new_entry = { time_in: (new Date).getTime(),
-                          exp_sec: data.token_exp_sec,
-                          token: data.token};
+function updateSunInfo() {
 
-        db.put('sunset_token', new_entry);
-    });
+    var sunrise_info;
+    var sunset_info;
+    sunsetwx.quality({
+        coords: '-71.126,42.402',
+        type: 'sunrise',
+        radius: '1',
+        limit: '1'}, function (err, httpResponse, body) {
+            sunrise_info = body;
+        });
+    sunsetwx.quality({
+        coords: '-71.126,42.402',
+        type: 'sunset',
+        radius: '1',
+        limit: '1'}, function (err, httpResponse, body) {
+            sunset_info = body;
+        });
+
+    var new_data = {'date' : (new Date).getDate(),
+                                   'sunrise' : sunrise_info,
+                                   'sunset' : sunset_info};
+    db.put('sun_info', new_data);
+
+    return new_data;
+
+>>>>>>> b684e324575886678af5096903e0718bbc7ce099
 }
