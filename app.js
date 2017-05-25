@@ -41,10 +41,12 @@ app.get('/sunset.json', function(request, response) {
     }
     token = db.get('sunset_token');
 
+    console.log('about to send request');
     request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126", 
         {'Authorization' : 
             {'Bearer' : token.token}}, 
         function (err, httpResponse, body){
+            console.log('request came back');
             response.send(body);
     });
 });
