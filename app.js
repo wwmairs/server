@@ -31,21 +31,22 @@ app.get('/weather.json', function(request, response) {
 });
 
 app.get('/sunset.json', function(request, response) {
-    // curr_time = (new Date).getTime();
-    // if (!db.has('sunset_token') ) {
-    //     get_token();
-    // }
-    // token = JSON.parse(db.get('sunset_token'));
-    // if (token.time_in + token.exp_sec >= curr_time) {
-    //     get_token();
-    // }
+    curr_time = (new Date).getTime();
+    if (!db.has('sunset_token') ) {
+        get_token();
+    }
+    token = JSON.parse(db.get('sunset_token'));
+    if (token.time_in + token.exp_sec >= curr_time) {
+        get_token();
+    }
+    token = JSON.parse(db.get('sunset_token'));
 
-    get_token();
-    // console.log(db.get('sunset_token'));
-
-    // db.put('hello', {world:1});
-    // console.log(db.get('hello'));
-
+    request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126", 
+        {'auth' : 
+            {'bearer' : token.token}}, 
+        function (err, httpResponse, body){
+            response.send(body);
+    });
 });
 
 app.get('/sweetboy', function(request, response) {
@@ -58,13 +59,13 @@ app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
 http.createServer(app).listen(80);
 
 function get_token() {
+    console.log('getting a new token ...');
     request.post("https://sunburst.sunsetwx.com/v1/login", {form:{email:"wwmairs@gmail.com", password:"Sweetboy1"}}, function (err, httpResponse, body){
         var data = JSON.parse(body);
         var new_entry = { time_in: (new Date).getTime(), 
                           exp_sec: data.token_exp_sec,
                           token: data.token};
-        console.log(new_entry);
 
-        // db.put('sunset_token', new_entry);
+        db.put('sunset_token', new_entry);
     });
 }
