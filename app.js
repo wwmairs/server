@@ -31,7 +31,7 @@ app.get('/weather.json', function(request, response) {
 });
 
 app.get('/sunset.json', function(request, response) {
-    curr_time = (new Date).getTime();
+    var curr_time = (new Date).getTime();
     if (!db.has('sunset_token') ) {
         get_token();
     }
@@ -42,8 +42,8 @@ app.get('/sunset.json', function(request, response) {
     token = JSON.parse(db.get('sunset_token'));
 
     request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126", 
-        {'auth' : 
-            {'bearer' : token.token}}, 
+        {'Authorization' : 
+            {'Bearer' : token.token}}, 
         function (err, httpResponse, body){
             response.send(body);
     });
