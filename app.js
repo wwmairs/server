@@ -57,9 +57,9 @@ app.get('/sunset.json', function(request, response) {
     // token = db.get('sunset_token');
 
     // console.log('about to send request');
-    // request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126", 
-    //     {'Authorization' : 
-    //         {'Bearer' : token.token}}, 
+    // request.get("https://sunburst.sunsetwx.com/v1/quality?type=sunset&coords=42.402%2C-71.126",
+    //     {'Authorization' :
+    //         {'Bearer' : token.token}},
     //     function (err, httpResponse, body){
     //         console.log('request came back');
     //         response.send(body);
@@ -79,7 +79,7 @@ function get_token() {
     console.log('getting a new token ...');
     request.post("https://sunburst.sunsetwx.com/v1/login", {form:{email:"wwmairs@gmail.com", password:"Sweetboy1"}}, function (err, httpResponse, body){
         var data = JSON.parse(body);
-        var new_entry = { time_in: (new Date).getTime(), 
+        var new_entry = { time_in: (new Date).getTime(),
                           exp_sec: data.token_exp_sec,
                           token: data.token};
 
