@@ -44,10 +44,9 @@ app.get('/weather.json', function(request, response) {
 //     'sunset' : <sunset_info>
 // }
 
-=======
 app.get('/sun.json', function(request, response) {
     var curr_date = (new Date).getDate();
-    if (!db.has('sun_info') or
+    if (!db.has('sun_info') ||
         (db.get('sun_info').date != curr_date)) {
             response.send(updateSunInfo());
     } else {
