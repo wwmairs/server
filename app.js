@@ -39,8 +39,8 @@ app.get('/sunset.json', function(request, response) {
     });
     sunsetwx.quality({
         coords: '-71.126,42.402',
-        type: 'sunset'}, function (err, data) {
-            response.send(data);
+        type: 'sunset'}, function (err, httpResponse, body) {
+            response.send(body);
         });
 
     // var curr_time = (new Date).getTime();
