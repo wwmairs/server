@@ -12,7 +12,7 @@ var SunsetWx = require('node-sunsetwx');
 
 var sunsetwx = new SunsetWx({
     email: 'wwmairs@gmail.com',
-    passowrd: 'Sweetboy1'
+    password: 'Sweetboy1'
     });
 
 
