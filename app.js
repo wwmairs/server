@@ -40,6 +40,7 @@ app.get('/sunset.json', function(request, response) {
     //     get_token();
     // }
     get_token();
+    console.log(db.get('sunset_token'));
 
 });
 
@@ -54,6 +55,9 @@ http.createServer(app).listen(80);
 
 function get_token() {
     request.post("https://sunburst.sunsetwx.com/v1/login", {form:{email:"wwmairs@gmail.com", password:"Sweetboy1"}}, function (err, httpResponse, body){
-        console.log(body);
+        var new_entry = { time_in: (new Date).getTime(), 
+                          exp_sec: body.token_exp_sec,
+                          token: body.token};
+        db.put('sunset_token', new_entry);
     });
 }
