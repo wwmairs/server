@@ -59,7 +59,7 @@ http.createServer(app).listen(80);
 
 function get_token() {
     request.post("https://sunburst.sunsetwx.com/v1/login", {form:{email:"wwmairs@gmail.com", password:"Sweetboy1"}}, function (err, httpResponse, body){
-        data = JSON.parse(body);
+        var data = JSON.parse(body);
         var new_entry = { time_in: (new Date).getTime(), 
                           exp_sec: data.token_exp_sec,
                           token: data.token};
