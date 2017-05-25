@@ -53,7 +53,6 @@ app.get('/sun.json', function(request, response) {
         response.send(db.get('sun_info'));
     }
 
->>>>>>> b684e324575886678af5096903e0718bbc7ce099
 });
 
 app.get('/sweetboy', function(request, response) {
@@ -91,5 +90,4 @@ function updateSunInfo() {
 
     return new_data;
 
->>>>>>> b684e324575886678af5096903e0718bbc7ce099
 }
