@@ -33,7 +33,7 @@ app.get('/weather.json', function(request, response) {
 });
 
 app.get('/sunset.json', function(request, response) {
-    var sunsetxw = new SunsetWx({
+    var sunsetwx = new SunsetWx({
     email: 'wwmairs@gmail.com',
     passowrd: 'Sweetboy1'
     });
