@@ -10,6 +10,11 @@ var url = require('url');
 var flatfile = require('flat-file-db');
 var SunsetWx = require('node-sunsetwx');
 
+var sunsetwx = new SunsetWx({
+    email: 'wwmairs@gmail.com',
+    passowrd: 'Sweetboy1'
+    });
+
 
 
 var bodyParser = require('body-parser');
@@ -33,10 +38,6 @@ app.get('/weather.json', function(request, response) {
 });
 
 app.get('/sunset.json', function(request, response) {
-    var sunsetwx = new SunsetWx({
-    email: 'wwmairs@gmail.com',
-    passowrd: 'Sweetboy1'
-    });
     sunsetwx.quality({
         coords: '-71.126,42.402',
         type: 'sunset'}, function (err, httpResponse, body) {
