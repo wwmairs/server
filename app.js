@@ -40,7 +40,9 @@ app.get('/weather.json', function(request, response) {
 app.get('/sunset.json', function(request, response) {
     sunsetwx.quality({
         coords: '-71.126,42.402',
-        type: 'sunset'}, function (err, httpResponse, body) {
+        type: 'sunset',
+        radius: '5',
+        limit: '5'}, function (err, httpResponse, body) {
             response.send(body);
         });
 
