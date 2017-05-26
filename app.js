@@ -73,19 +73,21 @@ function updateSunInfo() {
         type: 'sunrise',
         radius: '1',
         limit: '1'}, function (err, httpResponse, body) {
-            sunrise_info = body;
+            sunrise_info = JSON.stringify(body);
         });
     sunsetwx.quality({
         coords: '-71.126,42.402',
         type: 'sunset',
         radius: '1',
         limit: '1'}, function (err, httpResponse, body) {
-            sunset_info = body;
+            sunset_info = JSON.stringify(body);
         });
 
     var new_data = {'date' : (new Date).getDate(),
-                                   'sunrise' : sunrise_info,
-                                   'sunset' : sunset_info};
+                    'sunrise' : sunrise_info,
+                    'sunset' : sunset_info};
+    console.log('sunrise is ' + new_data.sunrise);
+    console.log('sunset is ' + new_data.sunset)
     db.put('sun_info', new_data);
 
     return new_data;
