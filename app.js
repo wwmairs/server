@@ -45,7 +45,6 @@ app.get('/weather.json', function(request, response) {
 // }
 
 app.get('/sun.json', function(request, response) {
-    db.del('sun_info');
     var curr_date = (new Date).getDate();
     if (!db.has('sun_info') ||
         (db.get('sun_info').date != curr_date)) {
