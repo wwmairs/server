@@ -67,8 +67,9 @@ http.createServer(app).listen(80);
 
 function updateSunInfo() {
 
-    var sunrise_info;
-    var sunset_info;
+    var new_data = {'date' : (new Date).getDate(),
+                    'sunrise' : 'initialize_me',
+                    'sunset' : 'initialize_me'};
     sunsetwx.quality({
         coords: '-71.126,42.402',
         type: 'sunrise',
@@ -77,25 +78,16 @@ function updateSunInfo() {
             console.log('ERR IS: ' + err);
             console.log('REP IS: ' + httpResponse);
             console.log('BODY IS: ' + body);
-            sunrise_info = JSON.stringify(body);
+            new_data.sunrise = body;
         });
     sunsetwx.quality({
         coords: '-71.126,42.402',
         type: 'sunset',
         radius: '1',
         limit: '1'}, function (err, httpResponse, body) {
-            sunset_info = JSON.stringify(body);
+            new_data.sunset = body;
+            db.put('sun_info', new_data);
+            return new_data;
         });
-
-    console.log('sunrise: ' + sunrise_info);
-    console.log('sunset: ' + sunset_info);
-    var new_data = {'date' : (new Date).getDate(),
-                    'sunrise' : sunrise_info,
-                    'sunset' : sunset_info};
-    console.log('sunrise is ' + new_data.sunrise);
-    console.log('sunset is ' + new_data.sunset)
-    db.put('sun_info', new_data);
-
-    return new_data;
 
 }
