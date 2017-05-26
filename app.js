@@ -83,6 +83,8 @@ function updateSunInfo() {
             sunset_info = JSON.stringify(body);
         });
 
+    console.log('sunrise: ' + sunrise_info);
+    console.log('sunset: ' + sunset_info);
     var new_data = {'date' : (new Date).getDate(),
                     'sunrise' : sunrise_info,
                     'sunset' : sunset_info};
