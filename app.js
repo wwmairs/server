@@ -77,6 +77,7 @@ function updateSunInfo() {
             new_data.sunrise = body;
             console.log(new_data.sunrise);
             db.put('sun_info', new_data);
+            console.log(db.get('sun_info'));
         });
     // sunsetwx.quality({
     //     coords: '-71.126,42.402',
