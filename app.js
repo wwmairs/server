@@ -74,6 +74,9 @@ function updateSunInfo() {
         type: 'sunrise',
         radius: '1',
         limit: '1'}, function (err, httpResponse, body) {
+            console.log('ERR IS: ' + err);
+            console.log('REP IS: ' + httpResponse);
+            console.log('BODY IS: ' + body);
             sunrise_info = JSON.stringify(body);
         });
     sunsetwx.quality({
