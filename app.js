@@ -51,6 +51,7 @@ app.get('/sun.json', function(request, response) {
         (db.get('sun_info').date != curr_date)) {
             updateSunInfo();
     }
+    console.log(db.get('sun_info'));
     response.send(db.get('sun_info'));
 
 });
@@ -75,9 +76,7 @@ function updateSunInfo() {
         radius: '1',
         limit: '1'}, function (err, httpResponse, body) {
             new_data.sunrise = body;
-            console.log(new_data.sunrise);
             db.put('sun_info', new_data);
-            console.log(db.get('sun_info'));
         });
     // sunsetwx.quality({
     //     coords: '-71.126,42.402',
