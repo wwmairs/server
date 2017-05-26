@@ -50,7 +50,6 @@ app.get('/sun.json', function(request, response) {
         (db.get('sun_info').date != curr_date)) {
             updateSunInfo();
     }
-    console.log(db.get('sun_info'));
     response.send(db.get('sun_info'));
 
 });
@@ -65,6 +64,7 @@ app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
 http.createServer(app).listen(80);
 
 function updateSunInfo() {
+    console.log('fetching new sun data');
 
     var new_data = {'date' : (new Date).getDate(),
                     'sunrise' : 'initialize_me',
@@ -77,13 +77,13 @@ function updateSunInfo() {
             new_data.sunrise = body;
             db.put('sun_info', new_data);
         });
-    // sunsetwx.quality({
-    //     coords: '-71.126,42.402',
-    //     type: 'sunset',
-    //     radius: '1',
-    //     limit: '1'}, function (err, httpResponse, body) {
-    //         new_data.sunset = body;
-    //         db.put('sun_info', new_data);
-    //     });
+    sunsetwx.quality({
+        coords: '-71.126,42.402',
+        type: 'sunset',
+        radius: '1',
+        limit: '1'}, function (err, httpResponse, body) {
+            new_data.sunset = body;
+            db.put('sun_info', new_data);
+        });
 
 }
