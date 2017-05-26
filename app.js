@@ -49,10 +49,9 @@ app.get('/sun.json', function(request, response) {
     var curr_date = (new Date).getDate();
     if (!db.has('sun_info') ||
         (db.get('sun_info').date != curr_date)) {
-            response.send(updateSunInfo());
-    } else {
-        response.send(db.get('sun_info'));
+            updateSunInfo();
     }
+    response.send(db.get('sun_info'));
 
 });
 
@@ -75,19 +74,17 @@ function updateSunInfo() {
         type: 'sunrise',
         radius: '1',
         limit: '1'}, function (err, httpResponse, body) {
-            console.log('ERR IS: ' + err);
-            console.log('REP IS: ' + httpResponse);
-            console.log('BODY IS: ' + body);
             new_data.sunrise = body;
-        });
-    sunsetwx.quality({
-        coords: '-71.126,42.402',
-        type: 'sunset',
-        radius: '1',
-        limit: '1'}, function (err, httpResponse, body) {
-            new_data.sunset = body;
+            console.log(new_data.sunrise);
             db.put('sun_info', new_data);
-            return new_data;
         });
+    // sunsetwx.quality({
+    //     coords: '-71.126,42.402',
+    //     type: 'sunset',
+    //     radius: '1',
+    //     limit: '1'}, function (err, httpResponse, body) {
+    //         new_data.sunset = body;
+    //         db.put('sun_info', new_data);
+    //     });
 
 }
