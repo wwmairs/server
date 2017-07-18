@@ -20,9 +20,14 @@ var sunsetwx = new SunsetWx({
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
+app.set('view engine', 'pug');
 
 var db = flatfile.sync('/tmp/wwmairs.db');
 
+
+app.get('/', function (req, res) {
+    res.render('index');
+});
 
 app.get('/weather.json', function(request, response) {
     if (request.query.pass == weather_pass) {
@@ -59,9 +64,10 @@ app.get('/sweetboy', function(request, response) {
 });
 
 // from https://expressjs.com/en/starter/static-files.html
-app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
+app.use(express.static('public'));
 
-http.createServer(app).listen(80);
+// changed for testing
+http.createServer(app).listen(3000);
 
 function updateSunInfo() {
     console.log('fetching new sun data');

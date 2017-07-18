@@ -1,0 +1,39 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		// my home page
+		title William Mairs
+		link(rel='icon', type='img/png', href='glasses.png')
+		// Roboto google font
+		link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:100|Roboto:100', rel='stylesheet')
+		// vulf fonts
+		link(href='vulfface/font.css', rel='stylesheet')
+		// Latest compiled and minified CSS
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		// jQuery
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+		// Latest compiled JavaScript
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		link(href='/css/index.css', rel='stylesheet')
+	body
+		.container-fluid
+			#hero-image.pane
+				.hero-text
+					h1 William Mairs
+			#pane2.pane
+				a.buttons(href='who.html') Who
+			#pane3.pane
+				a.buttons(href='what.html') What
+			#pane4.pane
+				a.buttons(href='where.html') Where
+			#pane5.pane
+				a.buttons(href='resume.html') Resume
+			#pane6.pane
+				a.buttons-light(href='contact.html') Contact
+			footer COPYRIGHT © WWMairs Inc. 2017
+			script.
+				$(".pane").height($(window).height());
+				$("#pane1").width($(window).width());
+				$("#pane1").height($(window).width());
