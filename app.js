@@ -3,6 +3,7 @@
 const weather_pass = 'sweetboy';
 var express = require('express');
 var app = express();
+var pug = require('pug');
 var path = require('path');
 var ForecastIo = require('forecastio');
 var http = require('http');
@@ -28,6 +29,10 @@ var db = flatfile.sync('/tmp/wwmairs.db');
 app.get('/', function (req, res) {
     res.render('index');
 });
+
+app.get('/resume', function (req, res) {
+    res.render('template', {css: 'resume', content: 'include resume'});;
+})
 
 app.get('/weather.json', function(request, response) {
     if (request.query.pass == weather_pass) {

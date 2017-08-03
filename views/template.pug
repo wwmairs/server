@@ -1,0 +1,71 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        // my resume
+        title Resume
+        link(rel='icon', type='img/png', href='glasses.png')
+        // Roboto google font
+        link(href='https://fonts.googleapis.com/css?family=Cutive+Mono:400|Roboto:100|Roboto+Slab:100', rel='stylesheet')
+        // vulf fonts
+        link(href='vulfface/font.css', rel='stylesheet')
+        // Latest compiled and minified CSS
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+        // jQuery
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        // Latest compiled JavaScript
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        link(href='/css/#{css}'.css, rel='stylesheet')
+    body
+        #sidebar-wrapper
+            h2#home-button
+                a(href='index.html') WWM
+            ul.sidebar-nav
+                li
+                    a(href='who.html') WHO
+                li
+                    a(href='what.html') WHAT
+                li
+                    a(href='where.html') WHERE
+                li
+                    a(href='resume.html') RESUME
+                    ul.internal-nav
+                        li
+                            a(href='#edu')
+                                | educ-
+                                br
+                                | ation
+                        li
+                            a(href='#langs')
+                                | lang-
+                                br
+                                | uages
+                        li
+                            a(href='#exp')
+                                | exper-
+                                br
+                                | ience
+                li
+                    a(href='contact.html') CONTACT
+        // sigebar-wrapper
+        .container-fluid
+            #{content}
+
+        #footer.container-fluid
+            .row
+                .col-md-4.col-sm-4.col-xs-12
+                    p#logo
+                        | WWM
+                    p
+                        | WWMairs © 2017
+                .col-md-8.col-sm-8.col-xs-12
+                    p
+                    ul#contact-links
+                        li
+                            a maps
+                        li
+                            a(href='contact.html') contact
+                        li
+                            a(href='https://github.com/wwmairs') github
+                    p#version
