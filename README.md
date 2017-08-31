@@ -9,3 +9,4 @@ It's mostly just a little playground to work out APIs, like the super cool [Dark
 - [ ] more interactive design using the Dark Sky data
 - [ ] maybe one day figure out HTTPS
 - [ ] more things!
+- [ ] use this just as a web app relay
