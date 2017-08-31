@@ -59,9 +59,9 @@ app.get('/sweetboy', function(request, response) {
 });
 
 // from https://expressjs.com/en/starter/static-files.html
-app.use(express.static('/home/ubuntu/Desktop/wwmairs'));
+app.use(express.static('/home/wm/Desktop/wwmairs'));
 
-http.createServer(app).listen(80);
+http.createServer(app).listen(82);
 
 function updateSunInfo() {
     console.log('fetching new sun data');

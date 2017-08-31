@@ -1,7 +1,5 @@
 # An ongoing personal site project
-This repo containts the HTML pages that I'm hosting using the nodejs/express [server](https://github.com/wwmairs/server "a rather simple server") that I've been putting together.  
-It's mostly just a little playground to work out APIs, like the super cool [Dark Sky](https://darksky.net) API. 
-
+This express server started out as a full-time webserver, tossing up my static pages and dealing with api calls and other bogus.  Now that I've got apache up on the pine, I can let that do the heavy lifting and use this little app, and lots of npm modules, to deal with apis.
 ### TODO
 - [x] serve static content
 - [x] figure out how to use darksky api (thanks to a neat [wrapper](https://github.com/soplakanets/node-forecastio))
